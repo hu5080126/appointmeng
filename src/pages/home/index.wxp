@@ -1,8 +1,11 @@
 <template>
-  <view>
-
+  <view class="title_layout">
+      <image src="../../img/temp1.png" mode="widthFix" class="title_img"></image>
+      <view class="title_text_layout">
+        <view>地址：新余市渝水区经济结构看考试大纲</view>
+        <view style="border:2rpx #f76285 solid;border-radius: 10rpx;padding: 10rpx 20rpx;" >导航</view>
+      </view>
   </view>
-
 </template>
 
 <script>
@@ -13,7 +16,28 @@
           }
       },
       data: {
-          showData:[],
+          showData:[{
+              imgUrl:"../../img/temp.png",
+              titleName: "养生xxxx项目",
+              price: 88,
+              time: 60,
+              desc: "非常好，很好哼帮，非常不错",
+              productId: ""
+          },{
+              imgUrl:"../../img/temp.png",
+              titleName: "养生xxxx项目",
+              price: 88,
+              time: 60,
+              desc: "非常好，很好哼帮，非常不错",
+              productId: ""
+          },{
+              imgUrl:"../../img/temp.png",
+              titleName: "养生xxxx项目",
+              price: 88,
+              time: 60,
+              desc: "非常好，很好哼帮，非常不错",
+              productId: ""
+          }],
 
       },
       onLoad(){
@@ -22,6 +46,15 @@
   }
 </script>
 
-<style>
-
+<style lang="less">
+  .title_layout{
+    background: white;
+    width: 100%;
+    .title_img {
+      width: 100%;
+    }
+    .title_text_layout{
+      display: flex;
+    }
+  }
 </style>
