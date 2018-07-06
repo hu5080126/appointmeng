@@ -34,12 +34,12 @@
                 "selectedIconPath": "img/appointment_press.png",
                 "iconPath": "img/appointment.png",
                 "pagePath": "pages/home/appointment",
-                "text": "日志"
+                "text": "预约"
             }, {
                 "selectedIconPath": "img/more_press.png",
                 "iconPath": "img/more.png",
                 "pagePath": "pages/home/more",
-                "text": "开心测试"
+                "text": "更多"
             }]
         },
     },
