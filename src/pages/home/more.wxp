@@ -1,0 +1,18 @@
+<template>
+    <view></view>
+</template>
+
+<script>
+    export default {
+        config: {
+            usingComponents: {
+
+            }
+        },
+        data: {}
+    }
+</script>
+
+<style lang="less">
+
+</style>

@@ -1,0 +1,61 @@
+<template>
+  <view>
+    <!-- wxp template -->
+    <page></page>
+  </view>
+</template>
+
+<script>
+  export default {
+    config: {
+        usingComponents: {},
+        pages: [],
+        window: {
+            backgroundTextStyle: 'dark',
+            backgroundColor: '#efefef',
+            navigationBarBackgroundColor: '#ffffff',
+            navigationBarTitleText: 'MinUI',
+            navigationBarTextStyle: 'black'
+        },
+        networkTimeout: {
+            request: 10000
+        },
+        tabBar: {
+            "color": "#eabbca",
+            "selectedColor": "#f76285",
+            "borderStyle": "white",
+            "backgroundColor": "#fdeff1",
+            "list": [{
+                "selectedIconPath": "img/index_press.png",
+                "iconPath": "img/index.png",
+                "pagePath": "pages/home/index",
+                "text": "首页"
+            }, {
+                "selectedIconPath": "img/appointment_press.png",
+                "iconPath": "img/appointment.png",
+                "pagePath": "pages/home/appointment",
+                "text": "日志"
+            }, {
+                "selectedIconPath": "img/more_press.png",
+                "iconPath": "img/more.png",
+                "pagePath": "pages/home/more",
+                "text": "开心测试"
+            }]
+        },
+    },
+    globalData: { },
+    onLaunch () { },
+    onShow () { },
+    onHide () { },
+
+  }
+</script>
+
+<style>
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.5;
+}
+</style>
