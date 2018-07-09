@@ -1,5 +1,13 @@
 <template>
-    <view></view>
+    <view>
+        <view wx:for="{{imgUrls}}"  wx:key="index" style="display: flex;justify-content: space-between;padding: 20rpx;background: white; margin-top: 1rpx">
+            <view style="display: flex;">
+                <image src="{{item}}" style="width: 40rpx;height: 40rpx;margin-top: 5rpx" mode="aspectFit"></image>
+                <view style="margin-left: 20rpx;height: 50rpx;line-height: 50rpx;">{{itemStr[index]}}</view>
+            </view>
+            <image src="../../img/right" style="width: 40rpx;height: 40rpx;margin-top: 5rpx" mode="aspectFit"></image>
+        </view>
+    </view>
 </template>
 
 <script>
@@ -9,7 +17,20 @@
 
             }
         },
-        data: {}
+        data: {
+            imgUrls: [
+                '../../img/my.png',
+                '../../img/worker.png',
+                '../../img/work_place.png',
+                '../../img/wifi.png',
+            ],
+            itemStr:[
+                '我的预约',
+                '美容师介绍',
+                '工作室环境',
+                '连接工作室WiFi'
+            ]
+        }
     }
 </script>
 

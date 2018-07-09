@@ -1,30 +1,32 @@
 <template>
-    <view style="height: 80%">
+    <view style="height: 65%">
 
     </view>
-    <view style="background-color: white; position: absolute; bottom: 0; height: 20%;padding: 20rpx;width: 100%">
-        <view style="display: flex;justify-content: space-between">
+    <view class="input-wrap">
+        <view style="display: flex;justify-content: space-between" class="item-style border-true">
             <view style="font-size: medium;color: black;">xxxx项目</view>
-            <view> > </view>
+            <image src="../../img/pull_down.png" mode="aspectFit" style="width: 50rpx;height: 50rpx;margin-top: 10rpx   "></image>
         </view>
-        <view>
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                <view class="picker">
+        <view  class="item-style border-true" style="display: flex;">
+            <picker mode="date" value="{{date}}" start="{{dateStart}}" end="{{dateEnd}}" bindchange="bindDateChange" style="width: 50%">
+                <view>
                     预约日期: {{date}}
                 </view>
             </picker>
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-                <view class="picker">
+            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange" style="width: 50%">
+                <view >
                     预约时间: {{time}}
                 </view>
             </picker>
         </view>
-        <input type="number"  placeholder="请输入手机号码"/>
-        <view>我要预约</view>
+        <input type="number" placeholder="请输入手机号码"  class="item-style border-true"/>
+        <view class="btn">我要预约</view>
     </view>
 </template>
 
 <script>
+    import {format, addMonths} from "../../util/date";
+
     export default {
         config: {
             usingComponents: {
@@ -33,11 +35,62 @@
         },
         data: {
             time:"",
-            date:""
-        }
+            date:"",
+            dateStart:"",
+            dateEnd: ""
+        },
+        bindDateChange(e) {
+            this.setData({
+                date: e.detail.value,
+            })
+        },
+        bindTimeChange(e) {
+            this.setData({
+                time: e.detail.value
+            })
+        },
+        onLoad() {
+            let startDay = format(new Date())
+            let endDay = format(addMonths(new Date(), 1))
+            this.setData({
+                dateStart: startDay,
+                dateEnd: endDay
+            })
+        },
+
+
+
     }
 </script>
 
 <style lang="less">
-
+    .input-wrap {
+        background-color: white;
+        position: absolute;
+        bottom: 0;
+        height: 35%;
+        padding: 2%;
+        width: 96%
+    }
+    .item-style{
+        height: 80rpx;
+        margin-top: 8rpx;
+        line-height: 80rpx;
+        &.border-true {
+            border-bottom: 2rpx #ebebeb solid;
+        }
+    }
+    .btn{
+        background: #f76285;
+        width: 50%;
+        margin-right: 25%;
+        margin-left: 25%;
+        border: #f76285 2rpx solid;
+        border-radius: 10rpx;
+        text-align: center;
+        color: white;
+        height: 80rpx;
+        margin-top: 30rpx;
+        line-height: 80rpx
+    }
 </style>

@@ -14,7 +14,7 @@
             backgroundTextStyle: 'dark',
             backgroundColor: '#666666',
             navigationBarBackgroundColor: '#ffffff',
-            navigationBarTitleText: 'MinUI',
+            navigationBarTitleText: '琴子工作室',
             navigationBarTextStyle: 'black'
         },
         networkTimeout: {
