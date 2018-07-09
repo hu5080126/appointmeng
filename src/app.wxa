@@ -12,7 +12,7 @@
         pages: [],
         window: {
             backgroundTextStyle: 'dark',
-            backgroundColor: '#efefef',
+            backgroundColor: '#666666',
             navigationBarBackgroundColor: '#ffffff',
             navigationBarTitleText: 'MinUI',
             navigationBarTextStyle: 'black'

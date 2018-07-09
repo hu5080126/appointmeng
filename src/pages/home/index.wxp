@@ -2,10 +2,24 @@
   <view class="title_layout">
       <image src="../../img/temp1.png" mode="widthFix" class="title_img"></image>
       <view class="title_text_layout">
-        <view>地址：新余市渝水区经济结构看考试大纲</view>
-        <view style="border:2rpx #f76285 solid;border-radius: 10rpx;padding: 10rpx 20rpx;" >导航</view>
+        <view><text>地址：新余市渝水区经济结构看考\n试大纲</text></view>
+        <view class="btn">查看地址</view>
       </view>
   </view>
+    <view wx:for="{{showData}}" wx:key="{{index}}" class="content_layout">
+        <image src="../../img/temp.png" mode="widthFix" style="width: 100%"></image>
+        <view class="content_first">
+            <view style="font-size: medium;color: black;">{{item.titleName}}</view>
+            <view style="display: flex;height: 60rpx;line-height: 60rpx">
+                <view style="font-size: medium;color: #f76285">¥{{item.price}}</view>
+                <view style="font-size: small;color: #666666">/{{item.time}}分钟</view>
+            </view>
+        </view>
+        <view class="content_second">
+            <view style="color: #fa8e27;font-size: small">{{item.desc}}</view>
+            <view data-id="{{item.productId}}" class="btn" style="background-color: #f76285; border-radius: 10rpx;color: white">预约</view>
+        </view>
+    </view>
 </template>
 
 <script>
@@ -48,13 +62,46 @@
 
 <style lang="less">
   .title_layout{
-    background: white;
-    width: 100%;
+      background: white;
+      height: 100%;
+      width: 100%;
     .title_img {
       width: 100%;
     }
     .title_text_layout{
-      display: flex;
+        display: flex;
+        justify-content: space-between;
+        padding: 20rpx;
     }
+  }
+
+  .content_layout{
+      padding: 20rpx;
+      margin-top: 20rpx;
+      background-color: white;
+      .content_first{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 60rpx;
+          line-height: 60rpx
+      }
+      .content_second{
+          display: flex;
+          justify-content: space-between;
+          height: 60rpx;
+          line-height: 60rpx;
+          margin-top: 20rpx;
+      }
+  }
+
+  .btn {
+      border:2rpx #f76285 solid;
+      border-radius: 30rpx;
+      color: #f76285;
+      width: 200rpx;
+      height: 60rpx;
+      text-align: center;
+      line-height: 60rpx;
   }
 </style>

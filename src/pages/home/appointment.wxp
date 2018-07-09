@@ -1,5 +1,27 @@
 <template>
-    <view></view>
+    <view style="height: 80%">
+
+    </view>
+    <view style="background-color: white; position: absolute; bottom: 0; height: 20%;padding: 20rpx;width: 100%">
+        <view style="display: flex;justify-content: space-between">
+            <view style="font-size: medium;color: black;">xxxx项目</view>
+            <view> > </view>
+        </view>
+        <view>
+            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                <view class="picker">
+                    预约日期: {{date}}
+                </view>
+            </picker>
+            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                <view class="picker">
+                    预约时间: {{time}}
+                </view>
+            </picker>
+        </view>
+        <input type="number"  placeholder="请输入手机号码"/>
+        <view>我要预约</view>
+    </view>
 </template>
 
 <script>
@@ -9,7 +31,10 @@
 
             }
         },
-        data: {}
+        data: {
+            time:"",
+            date:""
+        }
     }
 </script>
 
