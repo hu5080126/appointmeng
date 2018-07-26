@@ -1,5 +1,12 @@
 <template>
     <view>
+        <view style="background: white">
+            <image src="../../img/temp3" mode="widthFix" style="width: 100%"></image>
+            <view style="width: 100%;">
+                <view bindtap="callPhone" style="color: dodgerblue; height: 50rpx">电话咨询</view>
+                <view bindtap="showCode" style="color: dodgerblue; height: 50rpx">微信咨询</view>
+            </view>
+        </view>
         <view wx:for="{{imgUrls}}"  wx:key="index" style="display: flex;justify-content: space-between;padding: 20rpx;background: white; margin-top: 1rpx">
             <view style="display: flex;">
                 <image src="{{item}}" style="width: 40rpx;height: 40rpx;margin-top: 5rpx" mode="aspectFit"></image>
@@ -30,6 +37,16 @@
                 '工作室环境',
                 '连接工作室WiFi'
             ]
+        },
+        callPhone() {
+            wx.makePhoneCall({
+                phoneNumber: '12345678901' //仅为示例，并非真实的电话号码
+            })
+        },
+        showCode() {
+            wx.previewImage({
+                urls: ["https://odw4chlnd.qnssl.com/249d9d09fe50459cba64f310fb92c724"]
+            })
         }
     }
 </script>

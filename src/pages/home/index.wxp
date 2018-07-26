@@ -3,7 +3,7 @@
       <image src="../../img/temp1.png" mode="widthFix" class="title_img"></image>
       <view class="title_text_layout">
         <view><text>地址：新余市渝水区经济结构看考\n试大纲</text></view>
-        <view class="btn">查看地址</view>
+        <view class="btn" bindtap="goAddress">查看地址</view>
       </view>
   </view>
     <view wx:for="{{showData}}" wx:key="{{index}}" class="content_layout">
@@ -17,12 +17,14 @@
         </view>
         <view class="content_second">
             <view style="color: #fa8e27;font-size: small">{{item.desc}}</view>
-            <view data-id="{{item.productId}}" class="btn" style="background-color: #f76285; border-radius: 10rpx;color: white">预约</view>
+            <view data-id="{{item.productId}}" class="btn" bindtap="startAppointment"  data-item="{{item}}"
+                  style="background-color: #f76285; border-radius: 10rpx;color: white">预约</view>
         </view>
     </view>
 </template>
 
 <script>
+    import {encodeUrl} from "../../util/util"
   export default {
       config: {
           usingComponents: {
@@ -53,6 +55,18 @@
               productId: ""
           }],
 
+      },
+      startAppointment(e){
+          let item =  encodeUrl(e.currentTarget.dataset.item)
+          wx.navigateTo({
+            url: 'appointment?' + item
+          })
+
+      },
+      goAddress() {
+          wx.navigateTo({
+              url: 'address'
+          })
       },
       onLoad(){
 

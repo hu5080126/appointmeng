@@ -1,32 +1,56 @@
 <template>
-    <view style="height: 65%">
-
+    <view>
+        <view style="background: white;width: 100%;">
+            <image src="../../img/temp.png" mode="widthFix" style="width: 100%"></image>
+            <view style="">
+                <view style="font-size: medium;color: black;">{{itemData.titleName}}</view>
+                <view style="display: flex;height: 60rpx;justify-content: baseline">
+                    <view style="font-size: medium;color: #f76285">¥{{itemData.price}}</view>
+                    <view style="font-size: small;color: #666666">/{{itemData.time}}分钟</view>
+                </view>
+            </view>
+        </view>
+        <view style="background: white;width: 100%">
+            <view>产品介绍</view>
+            <view style="color: #888888;font-size: small;margin-top: 30rpx">描述:数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
+            <view style="color: #888888;font-size: small;margin-top: 30rpx">功效:数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
+        </view>
+        <view style="height: 10%"></view>
     </view>
-    <view class="input-wrap">
-        <view style="display: flex;justify-content: space-between" class="item-style border-true">
-            <view style="font-size: medium;color: black;">xxxx项目</view>
-            <image src="../../img/pull_down.png" mode="aspectFit" style="width: 50rpx;height: 50rpx;margin-top: 10rpx   "></image>
+    <view style="height: 10%;width: 100%;background: white;position: absolute;bottom: 0" bindtap="showAnimation">
+        <view style="width: 100%;height: 2%;background: #ebebeb"></view>
+        <view style="width: 35%;height: 98%;text-align: center;color: white;background: #f76285;margin-left: 65%;line-height: 115rpx;">开始预约</view>
+    </view>
+    <view animation="{{animationData}}"  style="width: 100%;height: 100%; position: absolute; top: 0; left: -100%;">
+        <view style="background: black;position: absolute;top: 0;opacity: 0.5;width: 100%;height: 100%;" bindtap="hideAnimation">
+
         </view>
-        <view  class="item-style border-true" style="display: flex;">
-            <picker mode="date" value="{{date}}" start="{{dateStart}}" end="{{dateEnd}}" bindchange="bindDateChange" style="width: 50%">
-                <view>
-                    预约日期: {{date}}
-                </view>
-            </picker>
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange" style="width: 50%">
-                <view >
-                    预约时间: {{time}}
-                </view>
-            </picker>
+        <view class="input-wrap">
+            <view style="display: flex;justify-content: space-between" class="item-style border-true">
+                <view style="font-size: medium;color: black;">xxxx项目</view>
+                <image src="../../img/pull_down.png" mode="aspectFit" style="width: 50rpx;height: 50rpx;margin-top: 10rpx   "></image>
+            </view>
+            <view  class="item-style border-true" style="display: flex;">
+                <picker mode="date" value="{{date}}" start="{{dateStart}}" end="{{dateEnd}}" bindchange="bindDateChange" style="width: 50%">
+                    <view>
+                        预约日期: {{date}}
+                    </view>
+                </picker>
+                <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange" style="width: 50%">
+                    <view >
+                        预约时间: {{time}}
+                    </view>
+                </picker>
+            </view>
+            <input type="number" placeholder="请输入手机号码"  class="item-style border-true"/>
+            <view class="btn">我要预约</view>
         </view>
-        <input type="number" placeholder="请输入手机号码"  class="item-style border-true"/>
-        <view class="btn">我要预约</view>
     </view>
 </template>
 
 <script>
     import {format, addMonths} from "../../util/date";
-
+    const globalData = getApp().globalData
     export default {
         config: {
             usingComponents: {
@@ -37,7 +61,16 @@
             time:"",
             date:"",
             dateStart:"",
-            dateEnd: ""
+            dateEnd: "",
+            animationData:{},
+            itemData: {
+                imgUrl:"../../img/temp.png",
+                titleName: "养生xxxx项目",
+                price: 88,
+                time: 60,
+                desc: "非常好，很好哼帮，非常不错",
+                productId: ""
+            }
         },
         bindDateChange(e) {
             this.setData({
@@ -49,9 +82,26 @@
                 time: e.detail.value
             })
         },
+        showAnimation(){
+            this.animation.translate(globalData.systemWidth, 0).step({ duration: 500 })
+            this.setData({
+                animationData: this.animation.export()
+            })
+        },
+        hideAnimation(){
+            this.animation.translate(-globalData.systemWidth, 0).step({ duration: 500 })
+            this.setData({
+                animationData: this.animation.export()
+            })
+        } ,
         onLoad() {
             let startDay = format(new Date())
             let endDay = format(addMonths(new Date(), 1))
+            let animation = wx.createAnimation({
+                duration: 1000,
+                timingFunction: 'ease',
+            })
+            this.animation = animation
             this.setData({
                 dateStart: startDay,
                 dateEnd: endDay
@@ -70,7 +120,7 @@
         bottom: 0;
         height: 35%;
         padding: 2%;
-        width: 96%
+        width: 96%;
     }
     .item-style{
         height: 80rpx;

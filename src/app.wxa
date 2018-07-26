@@ -30,12 +30,14 @@
                 "iconPath": "img/index.png",
                 "pagePath": "pages/home/index",
                 "text": "首页"
-            }, {
-                "selectedIconPath": "img/appointment_press.png",
-                "iconPath": "img/appointment.png",
-                "pagePath": "pages/home/appointment",
-                "text": "预约"
-            }, {
+            },
+            //     {
+            //     "selectedIconPath": "img/appointment_press.png",
+            //     "iconPath": "img/appointment.png",
+            //     "pagePath": "pages/home/appointment",
+            //     "text": "预约"
+            // },
+                {
                 "selectedIconPath": "img/more_press.png",
                 "iconPath": "img/more.png",
                 "pagePath": "pages/home/more",
@@ -43,8 +45,28 @@
             }]
         },
     },
-    globalData: { },
-    onLaunch () { },
+    globalData: {
+        systemWidth: 0,
+        systemHeight: 0,
+        system: "",
+
+    },
+    onLaunch () {
+        wx.getSystemInfo({
+            success: res=> {
+                this.globalData.systemWidth = res.screenWidth;
+                this.globalData.systemHeight = res.screenHeight - res.statusBarHeight;
+                this.globalData.system = res.system;
+                console.log(res.model)
+                console.log(res.pixelRatio)
+                console.log(res.windowWidth)
+                console.log(res.windowHeight)
+                console.log(res.language)
+                console.log(res.version)
+                console.log(res.platform)
+            }
+        })
+    },
     onShow () { },
     onHide () { },
 
