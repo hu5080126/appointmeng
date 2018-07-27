@@ -1,8 +1,8 @@
 <template>
   <view class="title_layout">
-      <image src="../../img/temp1.png" mode="widthFix" class="title_img"></image>
+      <image src="../../img/temp3.png" mode="widthFix" class="title_img"></image>
       <view class="title_text_layout">
-        <view><text>地址：新余市渝水区经济结构看考\n试大纲</text></view>
+        <view style="margin-right: 20rpx"><text>地址：江西新余渝水区暨阳上河园20栋2单元2202</text></view>
         <view class="btn" bindtap="goAddress">查看地址</view>
       </view>
   </view>

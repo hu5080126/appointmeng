@@ -2,20 +2,20 @@
     <view>
         <view style="background: white;width: 100%;">
             <image src="../../img/temp.png" mode="widthFix" style="width: 100%"></image>
-            <view style="">
-                <view style="font-size: medium;color: black;">{{itemData.titleName}}</view>
-                <view style="display: flex;height: 60rpx;justify-content: baseline">
+            <view style="padding: 20rpx 2%;">
+                <view style="font-size: medium;color: black;font-size: large">{{itemData.titleName}}</view>
+                <view style="display: flex;height: 60rpx;margin-top: 20rpx;line-height: 60rpx">
                     <view style="font-size: medium;color: #f76285">¥{{itemData.price}}</view>
-                    <view style="font-size: small;color: #666666">/{{itemData.time}}分钟</view>
+                    <view style="color: #666666;font-size: small">/</view>
+                    <view style="font-size: small;color: #666666;margin-top: 4rpx;">{{itemData.time}}分钟</view>
                 </view>
             </view>
         </view>
-        <view style="background: white;width: 100%">
-            <view>产品介绍</view>
-            <view style="color: #888888;font-size: small;margin-top: 30rpx">描述:数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
-            <view style="color: #888888;font-size: small;margin-top: 30rpx">功效:数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
+        <view style="background: white;width: 96%;margin-top: 20rpx;padding: 20rpx 3% 10% 3%">
+            <view style="color: black;font-size: medium">产品介绍</view>
+            <view style="color: #888888;font-size: 28rpx;margin-top: 30rpx">描述: 数据库p了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
+            <view style="color: #888888;font-size: 28rpx;margin-top: 35rpx">功效: 数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
         </view>
-        <view style="height: 10%"></view>
     </view>
     <view style="height: 10%;width: 100%;background: white;position: absolute;bottom: 0" bindtap="showAnimation">
         <view style="width: 100%;height: 2%;background: #ebebeb"></view>
