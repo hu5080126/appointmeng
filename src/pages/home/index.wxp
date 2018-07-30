@@ -6,7 +6,7 @@
         <view class="btn" bindtap="goAddress">查看地址</view>
       </view>
   </view>
-    <view wx:for="{{showData}}" wx:key="{{index}}" class="content_layout">
+    <view wx:for="{{showData}}" wx:key="{{index}}" class="content_layout" bindtap="startAppointment" data-item="{{item}}">
         <image src="../../img/temp.png" mode="widthFix" style="width: 100%"></image>
         <view class="content_first">
             <view style="font-size: medium;color: black;">{{item.titleName}}</view>
@@ -28,7 +28,7 @@
   export default {
       config: {
           usingComponents: {
-
+              contact: '../../common/contact'
           }
       },
       data: {

@@ -13,8 +13,8 @@
         </view>
         <view style="background: white;width: 96%;margin-top: 20rpx;padding: 20rpx 3% 10% 3%">
             <view style="color: black;font-size: medium">产品介绍</view>
-            <view style="color: #888888;font-size: 28rpx;margin-top: 30rpx">描述: 数据库p了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
-            <view style="color: #888888;font-size: 28rpx;margin-top: 35rpx">功效: 数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
+            <view style="color: #a0a0a0;font-size: 30rpx;margin-top: 30rpx;line-height: 50rpx;">描述: 数据库p了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
+            <view style="color: #a0a0a0;font-size: 30rpx;margin-top: 35rpx;line-height: 50rpx;">功效: 数据库了设计稿来科技大厦刘恺威进入了快结尾了困扰姐网络框架人了科技为了让加六维空间人连裤袜而偶然，沃日无饿哦就听水电费看手机独立国家而我认为</view>
         </view>
     </view>
     <view style="height: 10%;width: 100%;background: white;position: absolute;bottom: 0" bindtap="showAnimation">
@@ -43,18 +43,22 @@
                 </picker>
             </view>
             <input type="number" placeholder="请输入手机号码"  class="item-style border-true"/>
-            <view class="btn">我要预约</view>
+            <view style="position: relative">
+                <view class="btn">我要预约</view>
+                <button open-type="getUserInfo" class="bit-user" bindgetuserinfo="getUserInfo"></button>
+            </view>
         </view>
     </view>
 </template>
 
 <script>
     import {format, addMonths} from "../../util/date";
+    import {showWxToast} from "../../util/util"
     const globalData = getApp().globalData
     export default {
         config: {
             usingComponents: {
-
+                wxbtn: '../../common/weixin'
             }
         },
         data: {
@@ -94,6 +98,10 @@
                 animationData: this.animation.export()
             })
         } ,
+        getUserInfo(e){
+            globalData.userInfo = e.detail.userInfo
+            showWxToast("预约成功")
+        },
         onLoad() {
             let startDay = format(new Date())
             let endDay = format(addMonths(new Date(), 1))
@@ -107,9 +115,6 @@
                 dateEnd: endDay
             })
         },
-
-
-
     }
 </script>
 
@@ -142,5 +147,14 @@
         height: 80rpx;
         margin-top: 30rpx;
         line-height: 80rpx
+    }
+    .bit-user{
+        height: 80rpx;
+        width: 50%;
+        margin: auto;
+        opacity: 0.0;
+        position: absolute;
+        top: 0;
+        left: 25%;
     }
 </style>

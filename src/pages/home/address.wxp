@@ -7,17 +7,14 @@
         scale="18"
         show-location
     ></map>
-    <view style="width: 100%;">
-        <view bindtap="callPhone" style="color: dodgerblue; height: 50rpx">电话咨询</view>
-        <view bindtap="showCode" style="color: dodgerblue; height: 50rpx">微信咨询</view>
-    </view>
+    <contact></contact>
 </template>
 
 <script>
     export default {
         config: {
             usingComponents: {
-
+                contact: '../../common/contact'
             }
         },
         data: {
@@ -30,16 +27,7 @@
                 name: '琴子工作室'
             }]
         },
-        callPhone() {
-            wx.makePhoneCall({
-                phoneNumber: '12345678901' //仅为示例，并非真实的电话号码
-            })
-        },
-        showCode() {
-            wx.previewImage({
-                urls: ["https://odw4chlnd.qnssl.com/249d9d09fe50459cba64f310fb92c724"]
-            })
-        }
+
     }
 </script>
 

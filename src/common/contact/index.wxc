@@ -1,0 +1,53 @@
+<template>
+    <view class="contact-warp">
+        <view class="contact-item">
+            <image src="../../img/phone.png" class="contact-item-img" mode="widthFix"></image>
+            <view class="contact-item-text" bindtap="callPhone">电话咨询</view>
+        </view>
+        <view class="contact-item">
+          <image src="../../img/wechat.png" class="contact-item-img" mode="widthFix"></image>
+          <view class="contact-item-text" bindtap="showCode">微信咨询</view>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    methods: {
+        callPhone() {
+            wx.makePhoneCall({
+                phoneNumber: '12345678901' //仅为示例，并非真实的电话号码
+            })
+        },
+        showCode() {
+            wx.previewImage({
+                urls: ["https://odw4chlnd.qnssl.com/249d9d09fe50459cba64f310fb92c724"]
+            })
+        }
+    }
+}
+</script>
+
+<style>
+  .contact-warp{
+      width: 94%;
+      padding: 10rpx 3% 20rpx 3%;
+      background: white;
+  }
+
+  .contact-item {
+      display: flex;
+      margin-top: 15rpx;
+  }
+
+  .contact-item-img {
+      width: 40rpx;
+      height: 40rpx;
+      margin-right: 20rpx;
+
+  }
+
+  .contact-item-text {
+      color: #5cadff;
+  }
+</style>

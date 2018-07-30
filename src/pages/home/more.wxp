@@ -1,13 +1,10 @@
 <template>
     <view>
-        <view style="background: white">
+        <view style="background: white;margin-bottom: 20rpx">
             <image src="../../img/temp3" mode="widthFix" style="width: 100%"></image>
-            <view style="width: 100%;">
-                <view bindtap="callPhone" style="color: dodgerblue; height: 50rpx">电话咨询</view>
-                <view bindtap="showCode" style="color: dodgerblue; height: 50rpx">微信咨询</view>
-            </view>
+            <contact></contact>
         </view>
-        <view wx:for="{{imgUrls}}"  wx:key="index" style="display: flex;justify-content: space-between;padding: 20rpx;background: white; margin-top: 1rpx">
+        <view wx:for="{{imgUrls}}"  wx:key="index" bindtap="clickItem" data-index="{{index}}" style="display: flex;justify-content: space-between;padding: 20rpx;background: white; margin-top: 1rpx">
             <view style="display: flex;">
                 <image src="{{item}}" style="width: 40rpx;height: 40rpx;margin-top: 5rpx" mode="aspectFit"></image>
                 <view style="margin-left: 20rpx;height: 50rpx;line-height: 50rpx;">{{itemStr[index]}}</view>
@@ -18,13 +15,17 @@
 </template>
 
 <script>
+    import {handleWifiErrorCode} from "../../util/util"
     export default {
         config: {
             usingComponents: {
-
+                contact: '../../common/contact'
             }
         },
         data: {
+            SSID: "TP-LINK_CB24",
+            BSSID:"b8:f8:83:45:cb:24",
+            password:"17707909981",
             imgUrls: [
                 '../../img/my.png',
                 '../../img/worker.png',
@@ -38,15 +39,49 @@
                 '连接工作室WiFi'
             ]
         },
-        callPhone() {
-            wx.makePhoneCall({
-                phoneNumber: '12345678901' //仅为示例，并非真实的电话号码
-            })
-        },
-        showCode() {
-            wx.previewImage({
-                urls: ["https://odw4chlnd.qnssl.com/249d9d09fe50459cba64f310fb92c724"]
-            })
+        clickItem(e) {
+             let index = e.currentTarget.dataset.index;
+             switch (index) {
+                 case 0:
+                     //我的预约
+                     break;
+                 case 1:
+                     //美容师介绍
+                     break;
+                 case 2:
+                     //工作室环境
+                     // wx.navigateTo({
+                     //   url: 'myVidio'
+                     // })
+                     wx.previewImage({
+                         urls: ['https://cdn.2haohr.com/ios/img/wifi/112/template1.png', 'https://cdn.2haohr.com/ios/img/wifi/112/template2.png', 'https://cdn.2haohr.com/ios/img/wifi/112/template3.png', 'https://cdn.2haohr.com/ios/img/wifi/112/template4.png', 'https://cdn.2haohr.com/ios/img/wifi/112/template5.png'],
+                     })
+                     break;
+                 case 3:
+                     //连接wifi
+                     wx.showLoading({
+                         title: '连接WiFi中...',
+                         mask: true
+                     })
+                     wx.startWifi({
+                         success: res => {
+                             wx.connectWifi({
+                                 SSID: this.data.SSID,
+                                 BSSID: this.data.BSSID,
+                                 password: this.data.password,
+                                 success: res => {
+                                     wx.hideLoading()
+                                     showWxToast("连接成功")
+                                 },
+                                 fail: res => {
+                                     wx.hideLoading()
+                                     handleWifiErrorCode(res.errCode);
+                                 }
+                             })
+                         }
+                     })
+                     break
+             }
         }
     }
 </script>

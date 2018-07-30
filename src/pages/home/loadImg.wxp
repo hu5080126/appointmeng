@@ -1,0 +1,21 @@
+<template>
+    <image src="../../img/my.png" ></image>
+    <image src="../../img/worker.png"></image>
+    <image src="../../img/work_place.png"></image>
+    <image src="../../img/wifi.png"></image>
+</template>
+
+<script>
+    export default {
+        config: {
+            usingComponents: {
+
+            }
+        },
+        data: {}
+    }
+</script>
+
+<style lang="less">
+
+</style>
